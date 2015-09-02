@@ -142,7 +142,7 @@ while True:
                 activeblocks.remove(block)
                 allsprites.remove(block)
                 score += 1
-                if score % 55 == 0:
+                if score % 60 == 0:
                     DX += 2
                     DY += 2
 
