@@ -174,6 +174,9 @@ while True:
         if pygame.sprite.spritecollide(Player, activeblocks, False):
             gameOver=True
 
+        timeText=myFont.render(time.strftime('Time %H:%M  (%Z)'),True,WHITE)
+        window.blit(timeText, (screen_w*3//4, screen_h + 5))
+
 
 
     pygame.display.update()
