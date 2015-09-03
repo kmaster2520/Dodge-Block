@@ -11,6 +11,7 @@ WHITE = (255, 255, 255)
 BLACK = (  0,   0,   0)
 BLUE  = (  0,   0, 255)
 RED   = (255,   0,   0)
+GREEN = (  0, 255,   0)
 ENEMYCOLOR = RED
 PLAYERCOLOR = BLUE
 BLOCKWIDTH = 20
@@ -51,6 +52,7 @@ gameOver = True
 
 score = 0
 slowdown = 200
+slowDisabled = False
 isSlow = False
 START_X = screen_w//2
 START_Y = screen_h//2
@@ -93,6 +95,7 @@ while True:
             allsprites.add(Player)
             score = 0
             slowdown = 200
+            slowDisabled = False
         
     
     elif not gameOver:
@@ -105,12 +108,21 @@ while True:
         if keys[K_DOWN] and Player.rect.y < screen_h + BLOCKHEIGHT:
             Player.rect.y += SPEED
 
-        isSlow=keys[K_SPACE]
-        if isSlow and slowdown >= 5:
+        isSlow = keys[K_SPACE] and not slowDisabled
+        if isSlow:
             slowdown -= 4
+            slowdown = max(slowdown, 0)
+            if slowdown <= 0:
+                isSlow = False
+                slowDisabled = True
+            
         elif slowdown < 200:
             slowdown += 2
+            slowdown = min(slowdown, 200)
             isSlow = False
+            if slowdown >= 200:
+                slowDisabled = False
+            
 
             
         if random() < 0.17 and not isSlow:
@@ -154,7 +166,10 @@ while True:
 
         slowText = myFont.render('Slowdown (Press Space)', 1, WHITE)
         window.blit(slowText, (screen_w//2 - 180, screen_h + 5))
-        pygame.draw.rect(window, RED, (screen_w//2, screen_h + 5, slowdown//2, 10))
+        if not slowDisabled:
+            pygame.draw.rect(window, GREEN, (screen_w//2, screen_h + 5, slowdown//2, 10))
+        else:
+            pygame.draw.rect(window, RED, (screen_w//2, screen_h + 5, slowdown//2, 10))
 
         if pygame.sprite.spritecollide(Player, activeblocks, False):
             gameOver=True
