@@ -127,6 +127,7 @@ while True:
 
             
         if random() < 0.13 and not isSlow:
+            option = randint(1, 4)
             if option == 1:
                 newBlock = Block(int(screen_w * random()), 0,
                                  0, DY, ENEMYCOLOR)
