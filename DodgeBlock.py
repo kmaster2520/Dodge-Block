@@ -1,6 +1,7 @@
 #- Dodge Block
 # By Sathvik Kadaveru
 
+# must have pygame and python3 to play
 
 import pygame,sys
 from pygame.locals import *
