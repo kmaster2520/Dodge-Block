@@ -32,7 +32,7 @@ class Block(pygame.sprite.Sprite):
         self.dy = dy
     def update(self):
         self.rect.x += self.dx
-        self.rect.y += self.dy      
+        self.rect.y += self.dy
 
 screen_w = 700
 screen_h = 500
