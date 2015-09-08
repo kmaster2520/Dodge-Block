@@ -127,7 +127,6 @@ while True:
 
             
         if random() < 0.13 and not isSlow:
-            option = randint(1, 4)
             if option == 1:
                 newBlock = Block(int(screen_w * random()), 0,
                                  0, DY, ENEMYCOLOR)
@@ -140,7 +139,6 @@ while True:
             else:
                 newBlock = Block(screen_w, int(screen_h * random()),
                                  -DX, 0, ENEMYCOLOR)
-
                 
             activeblocks.add(newBlock)
             allsprites.add(newBlock)
