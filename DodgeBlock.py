@@ -111,7 +111,7 @@ while True:
 
         isSlow = keys[K_SPACE] and not slowDisabled
         if isSlow:
-            slowdown -= 4
+            slowdown -= 6
             slowdown = max(slowdown, 0)
             if slowdown <= 0:
                 isSlow = False
