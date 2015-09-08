@@ -42,8 +42,8 @@ mainClock = pygame.time.Clock()
 window = pygame.display.set_mode((screen_w, screen_h+30), 0, 32)
 pygame.display.set_caption('Dodge Block')
 
-myFont = pygame.font.Font(None,20)
-myFont72 = pygame.font.Font(None,72)
+myFont = pygame.font.SysFont("Courier",14)
+myFont72 = pygame.font.SysFont("Courier",54)
 
 activeblocks = pygame.sprite.Group()
 allsprites = pygame.sprite.Group()
@@ -82,7 +82,7 @@ while True:
         textRect.centery = screen_h//2
         window.blit(titleText, textRect)
         #
-        titleText = myFont72.render('Your Score: '+str(score), 1, WHITE)
+        titleText = myFont72.render('Your Score: ' + '%3d'%score, 1, WHITE)
         textRect = titleText.get_rect()
         textRect.centerx = screen_w//2
         textRect.centery = 3*screen_h//4
@@ -161,7 +161,7 @@ while True:
 
         pygame.draw.rect(window, BLACK, (0, screen_h, screen_w, 30), 0)
 
-        scoreText = myFont.render('score: '+str(score), 1, WHITE)
+        scoreText = myFont.render('Your Score: ' + '%3d'%score, 1, WHITE)
         window.blit(scoreText, (5, screen_h + 5))
 
         slowText = myFont.render('Slowdown (Press Space)', 1, WHITE)
