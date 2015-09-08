@@ -97,8 +97,7 @@ while True:
             score = 0
             slowdown = 200
             slowDisabled = False
-        
-    
+
     elif not gameOver:
         if keys[K_LEFT] and Player.rect.x > -BLOCKWIDTH:
             Player.rect.x -= SPEED
@@ -116,16 +115,15 @@ while True:
             if slowdown <= 0:
                 isSlow = False
                 slowDisabled = True
-            
+
         elif slowdown < 200:
             slowdown += 2
             slowdown = min(slowdown, 200)
             isSlow = False
             if slowdown >= 200:
                 slowDisabled = False
-            
 
-            
+
         if random() < 0.13 and not isSlow:
             option = randint(1, 4)
             if option == 1:
@@ -140,7 +138,7 @@ while True:
             else:
                 newBlock = Block(screen_w, int(screen_h * random()),
                                  -DX, 0, ENEMYCOLOR)
-                
+
             activeblocks.add(newBlock)
             allsprites.add(newBlock)
 
